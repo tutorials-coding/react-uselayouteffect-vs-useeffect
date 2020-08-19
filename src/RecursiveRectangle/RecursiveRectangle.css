@@ -1,0 +1,6 @@
+.rect-base-class {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: #fff;
+}
