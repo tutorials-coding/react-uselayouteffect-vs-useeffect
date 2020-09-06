@@ -1,6 +1,13 @@
 import React, { useEffect, useLayoutEffect, useState } from 'react'
 
+// Call order
 export const Example1 = () => {
+  // expected output:
+  // useLayoutEffect 1
+  // useLayoutEffect 2
+  // useEffect 1
+  // useEffect 2
+
   useEffect(() => {
     console.log('useEffect 1')
   }, [])
@@ -20,6 +27,7 @@ export const Example1 = () => {
   return <></>
 }
 
+// Flickering
 export const Example2 = () => {
   const NOT_SET_STATUS = '======= NOT SET ======='
   const INITIALIZED_STATUS = 'INITIALIZED'
@@ -27,10 +35,10 @@ export const Example2 = () => {
 
   const [initialized] = useState(true)
 
-  // useLayoutEffect
+  // try: useLayoutEffect
   useEffect(() => {
     setStatus(initialized ? INITIALIZED_STATUS : NOT_SET_STATUS)
-  }, [initialized])
+  }, [initialized]) // try: []
 
   return <h1>{status}</h1>
 }
@@ -39,7 +47,7 @@ export default function App() {
   return (
     <div className="main-container">
       <Example1 />
-      <Example2 />
+      {/* <Example2 /> */}
     </div>
   )
 }
