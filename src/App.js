@@ -1,8 +1,5 @@
 import React, { useEffect, useLayoutEffect, useState } from 'react'
 
-import { RecursiveRectangle } from './RecursiveRectangle'
-import { colorMap } from './colorMap'
-
 export const Example1 = () => {
   useEffect(() => {
     console.log('useEffect 1')
@@ -35,13 +32,7 @@ export const Example2 = () => {
     setStatus(initialized ? INITIALIZED_STATUS : NOT_SET_STATUS)
   }, [initialized])
 
-  return (
-    <>
-      <RecursiveRectangle colorMap={colorMap} sizePx={500}>
-        {status}
-      </RecursiveRectangle>
-    </>
-  )
+  return <h1>{status}</h1>
 }
 
 export default function App() {
